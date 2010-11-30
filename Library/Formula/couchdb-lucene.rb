@@ -1,8 +1,8 @@
 require 'formula'
 
 class CouchdbLucene <Formula
-  url 'http://github.com/rnewson/couchdb-lucene/tarball/v0.5.3'
-  homepage 'http://github.com/rnewson/couchdb-lucene'
+  url 'https://github.com/rnewson/couchdb-lucene/tarball/v0.5.3'
+  homepage 'https://github.com/rnewson/couchdb-lucene'
   md5 '1b9be17eb59b6b2839e50eb222bc7e7e'
 
   depends_on 'couchdb'
@@ -24,8 +24,8 @@ class CouchdbLucene <Formula
   def caveats; <<-EOS
 You can enable couchdb-lucene to automatically load on login with:
 
-  sudo cp "#{prefix}/couchdb-lucene.plist" /Library/LaunchDaemons/
-  sudo launchctl load -w /Library/LaunchDaemons/couchdb-lucene.plist
+  cp "#{prefix}/couchdb-lucene.plist" ~/Library/LaunchAgents/
+  launchctl load -w ~/Library/LaunchAgents/couchdb-lucene.plist
 
 Or start it manually with:
   #{bin}/run

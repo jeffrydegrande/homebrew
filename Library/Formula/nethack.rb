@@ -16,6 +16,9 @@ class Nethack <Formula
   version '3.4.3'
   md5 '21479c95990eefe7650df582426457f9'
 
+  # Don't remove save folder
+  skip_clean 'libexec/save'
+
   def patches
     DATA
   end
@@ -30,7 +33,7 @@ class Nethack <Formula
 
     inreplace "include/config.h",
       /^#\s*define HACKDIR.*$/,
-      "#define HACKDIR \"#{var}/nethack\""
+      "#define HACKDIR \"#{libexec}\""
 
     # Make the data first, before we munge the CFLAGS
     system "cd dat;make"
@@ -51,7 +54,7 @@ class Nethack <Formula
     system 'cd src;make'
 
     bin.install 'src/nethack'
-    (var+'nethack').mkpath
+    (libexec+'save').mkpath
   end
 end
 
